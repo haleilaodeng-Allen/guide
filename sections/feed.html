@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>攻略</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500;600&display=swap');
+  :root{--bg:#12100e;--bg-card:#1c1916;--cream:#f2ece1;--cream-dim:#b3a994;--gold:#c8a24b;--line:rgba(242,236,225,.12);
+    --display:"Cormorant Garamond",Georgia,serif;--cn:"Noto Serif SC",serif;--sans:"Inter","PingFang SC",system-ui,sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--cream);font-family:var(--sans);min-height:100vh;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .bar{display:flex;align-items:center;padding:24px 0 6px}
+  .back{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--cream-dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:color .25s}
+  .back:hover{color:var(--cream)}
+  .back .ar{width:16px;height:1px;background:currentColor;position:relative}
+  .back .ar::before{content:"";position:absolute;left:0;top:-2px;width:5px;height:5px;border-left:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
+  .shead{padding:18px 0 30px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .shead .crumb{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .shead h1{font-family:var(--display);font-weight:600;font-size:clamp(36px,6vw,60px);line-height:1;letter-spacing:.02em}
+  .shead .tag{font-family:var(--cn);font-size:14px;color:var(--cream-dim);margin-top:14px;letter-spacing:.06em}
+  .feed{columns:3;column-gap:18px;padding-bottom:70px}
+  @media(max-width:880px){.feed{columns:2;column-gap:14px}}
+  @media(max-width:540px){.feed{columns:2;column-gap:10px}}
+  .pin{break-inside:avoid;margin-bottom:18px;display:block;text-decoration:none;color:inherit;background:var(--bg-card);border-radius:10px;overflow:hidden;border:1px solid var(--line);transition:transform .4s cubic-bezier(.2,.6,.2,1),border-color .4s}
+  @media(max-width:540px){.pin{margin-bottom:10px}}
+  .pin:hover{transform:translateY(-4px);border-color:rgba(200,162,75,.35)}
+  .pin .ph{position:relative;width:100%;overflow:hidden;background:#211d19;display:block}
+  .pin .ph img{width:100%;display:block;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+  .pin:hover .ph img{transform:scale(1.04)}
+  .pin .vbadge{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(10,8,6,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center}
+  .pin .vbadge::after{content:"";border-left:9px solid var(--cream);border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px}
+  .pin.has-video .vbadge{display:flex}
+  .pin .meta{padding:13px 14px 16px}
+  .pin .meta .t{font-family:var(--cn);font-weight:600;font-size:15px;line-height:1.35;color:var(--cream)}
+  .pin .meta .s{font-family:var(--cn);font-size:12px;color:var(--cream-dim);margin-top:5px;line-height:1.4}
+  .empty{text-align:center;padding:90px 20px;color:var(--cream-dim);font-family:var(--cn);font-size:15px;line-height:1.8}
+  .empty .em-en{font-family:var(--display);font-style:italic;font-size:30px;color:var(--gold);margin-bottom:14px;display:block}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="bar"><a class="back" id="back"><span class="ar"></span> <span id="backtxt">返回</span></a></div>
+    <header class="shead">
+      <div class="crumb" id="crumb"></div>
+      <h1 id="sname">—</h1>
+      <div class="tag" id="stag"></div>
+    </header>
+    <main class="feed" id="feed"></main>
+  </div>
+  <script src="../data/guide-data.js"></script>
+  <script>
+    const params=new URLSearchParams(location.search);
+    const cityId=params.get('city')||GUIDE.cities[0].id;
+    const sid=params.get('s')||'fine-dining';
+    const city=GUIDE.cities.find(c=>c.id===cityId)||GUIDE.cities[0];
+    const section=GUIDE.sections.find(s=>s.id===sid)||GUIDE.sections[0];
+    const items=GUIDE.items[`${cityId}-${sid}`]||[];
+
+    document.getElementById('back').href=`section.html?city=${cityId}`;
+    document.getElementById('backtxt').textContent=city.name;
+    document.getElementById('crumb').textContent=`${city.nameEn} · ${section.name}`;
+    document.getElementById('sname').textContent=section.name;
+    document.getElementById('stag').textContent=section.tagline||'';
+
+    const feed=document.getElementById('feed');
+    if(!items.length){
+      feed.style.columns='auto';
+      feed.innerHTML=`<div class="empty"><span class="em-en">Coming soon</span>这个城市的此板块正在整理中，敬请期待。</div>`;
+    }else{
+      items.forEach(it=>{
+        const hasVideo=(it.media||[]).some(m=>typeof m==='object'&&m.video);
+        const a=document.createElement('a');
+        a.className='pin'+(hasVideo?' has-video':'');
+        a.href=`../detail/detail.html?city=${cityId}&s=${sid}&i=${it.id}`;
+        a.innerHTML=`
+          <div class="ph">
+            <img src="../${it.folder}/${it.cover}" alt="${it.title}" style="object-position:${it.coverPos||'center'}">
+            <div class="vbadge"></div>
+          </div>
+          <div class="meta">
+            <div class="t">${it.title}</div>
+            ${it.subtitle?`<div class="s">${it.subtitle}</div>`:''}
+          </div>`;
+        feed.appendChild(a);
+      });
+    }
+  </script>
+</body>
+</html>
