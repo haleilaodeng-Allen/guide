@@ -37,11 +37,11 @@
 /* ---- 固定的三个板块（每个城市都一样，一般不用改）---- */
 const SECTIONS = [
   { id:'fine-dining', name:'Fine Dining', tagline:'海风、落日与一桌讲究',
-    cover:'images/_shared/fine-dining.jpg', pos:'center' },
+    cover:'images/shared/fine-dining.jpg', pos:'center' },
   { id:'experience',  name:'Experience',  tagline:'把这座城过成自己的故事',
-    cover:'images/_shared/experience.jpg', pos:'50% 60%' },
+    cover:'images/shared/experience.jpg', pos:'50% 60%' },
   { id:'cafe-club',   name:'Cafe & Club', tagline:'从清晨手冲到午夜霓虹',
-    cover:'images/_shared/cafe-club.jpg', pos:'50% 60%' },
+    cover:'images/shared/cafe-club.jpg', pos:'50% 60%' },
 ];
 
 /* ---- 城市列表（显示顺序 = 数组顺序）---- */
