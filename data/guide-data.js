@@ -96,8 +96,8 @@ const ITEMS = {
   title:'Toh-Daeng by Baan Ar-Jor',
   subtitle:'近百年历史老宅里的普吉米其林风味',
   folder:'images/phuket/fine-dining/toh-daeng-baan-ar-jor',
-  cover:'1.jpg', coverPos:'center',
-  media:['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg'],
+  cover:'1.png', coverPos:'center',
+media:['1.png','2.png','3.png','4.png','5.png','6.png','7.png','8.png','9.png'],
   tagline:'Michelin-recognized Phuket heritage dining in a century-old family house.',
   body:
     'Toh-Daeng by Baan Ar-Jor 位于普吉岛迈考海滩附近，是一家藏在历史老宅里的普吉风味餐厅。这里不只是吃饭的地方，更像是一座带有故事感的乡村庄园：白色老宅、红色长桌、菜园、博物馆和传统家具，让人能感受到普吉本地文化、中华元素与东南亚风情交融在一起的氛围。\n\n' +
