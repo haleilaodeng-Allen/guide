@@ -91,6 +91,28 @@ const ITEMS = {
         '主厨的 tasting menu 随季节更换，摆盘极具艺术感。' +
         '位于 Trisara 度假村内，环境安静私密，适合纪念日或重要的一餐。',
     },
+     {
+  id:'toh-daeng-baan-ar-jor',
+  title:'Toh-Daeng by Baan Ar-Jor',
+  subtitle:'近百年历史老宅里的普吉米其林风味',
+  folder:'images/phuket/fine-dining/toh-daeng-baan-ar-jor',
+  cover:'1.jpg', coverPos:'center',
+  media:['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg'],
+  tagline:'Michelin-recognized Phuket heritage dining in a century-old family house.',
+  body:
+    'Toh-Daeng by Baan Ar-Jor 位于普吉岛迈考海滩附近，是一家藏在历史老宅里的普吉风味餐厅。这里不只是吃饭的地方，更像是一座带有故事感的乡村庄园：白色老宅、红色长桌、菜园、博物馆和传统家具，让人能感受到普吉本地文化、中华元素与东南亚风情交融在一起的氛围。\n\n' +
+    '这家餐厅曾多次获得米其林指南推荐，主打普吉本地食材和传统南部泰国风味。相比普通游客餐厅，它更适合安排给住在 Mai Khao、Anantara、Avani、JW Marriott、Renaissance 附近的客人。这里的优势不是“贵”，而是有历史、有环境、有故事，同时菜品价格相对友好，适合想体验普吉本地味道，又希望用餐场景有记忆点的客人。\n\n' +
+    '推荐菜品：\n' +
+    '炭烤安达曼海干鱿鱼配坚果甜酱\n' +
+    '咸蛋酱炸鲜鱼皮\n' +
+    '经典炸鸡翅\n' +
+    '百年秘制脆皮面条配特制肉汁、大虾和腌大蒜\n' +
+    '红咖喱配时令红毛丹和腰果烤猪肉\n' +
+    '6 小时炖普吉猪肉配中草药\n' +
+    '普吉岛风格煎蛋卷，可选安达曼大虾或螃蟹\n\n' +
+    '适合安排：\n' +
+    '适合午餐或晚餐，尤其适合住在 Mai Khao、Anantara、Avani、JW Marriott、Renaissance 附近的客人。从安纳塔拉酒店附近打车过去大约十分钟。餐厅建议提前预约，老宅内还有博物馆可参观，如果时间充裕，可以把这顿饭安排成一次“老普吉文化 + 米其林本地菜”的体验。',
+},
   ],
 
   /* ====== 普吉岛 · Experience / Cafe & Club 暂无内容（自动显示敬请期待）====== */
