@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>详情</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500;600&display=swap');
+  :root{
+    --bg:#100e0c;--panel:#1a1714;--cream:#f2ece1;--cream-dim:#b3a994;--cream-faint:#7d7461;
+    --gold:#c8a24b;--line:rgba(242,236,225,.12);
+    --display:"Cormorant Garamond",Georgia,serif;
+    --cn:"Noto Serif SC",serif;
+    --sans:"Inter","PingFang SC",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--cream);font-family:var(--sans);min-height:100vh;-webkit-font-smoothing:antialiased}
+
+  .topbar{max-width:1180px;margin:0 auto;padding:22px 24px 0}
+  .back{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--cream-dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:color .25s}
+  .back:hover{color:var(--cream)}
+  .back .ar{width:16px;height:1px;background:currentColor;position:relative}
+  .back .ar::before{content:"";position:absolute;left:0;top:-2px;width:5px;height:5px;border-left:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
+
+  /* book-style split */
+  .book{max-width:1180px;margin:0 auto;padding:22px 24px 70px;display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
+  @media(max-width:900px){.book{grid-template-columns:1fr;gap:28px;padding-top:16px}}
+
+  /* ---- left: carousel ---- */
+  .gallery{position:sticky;top:24px}
+  @media(max-width:900px){.gallery{position:static}}
+  .stage{position:relative;width:100%;aspect-ratio:4/5;background:var(--panel);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity .55s ease;display:flex;align-items:center;justify-content:center}
+  .slide.active{opacity:1}
+  .slide img,.slide video{width:100%;height:100%;object-fit:cover;display:block}
+  .nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;
+    background:rgba(10,8,6,.45);backdrop-filter:blur(6px);border:1px solid rgba(242,236,225,.18);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:background .25s;color:var(--cream)}
+  .nav:hover{background:rgba(10,8,6,.75)}
+  .nav.prev{left:12px}.nav.next{right:12px}
+  .nav i{width:9px;height:9px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;display:block}
+  .nav.prev i{transform:rotate(-135deg);margin-left:3px}
+  .nav.next i{transform:rotate(45deg);margin-right:3px}
+  .nav.hidden{display:none}
+  .dots{display:flex;gap:7px;justify-content:center;margin-top:14px}
+  .dot{width:7px;height:7px;border-radius:50%;background:rgba(242,236,225,.25);cursor:pointer;transition:all .3s}
+  .dot.active{background:var(--gold);width:20px;border-radius:4px}
+  .counter{position:absolute;top:12px;left:12px;z-index:3;background:rgba(10,8,6,.5);backdrop-filter:blur(4px);
+    color:var(--cream);font-size:11px;letter-spacing:.1em;padding:5px 10px;border-radius:20px;font-variant-numeric:tabular-nums}
+
+  /* ---- right: text ---- */
+  .content{padding-top:6px}
+  .content .crumb{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .content h1{font-family:var(--display);font-weight:600;font-size:clamp(34px,5vw,52px);line-height:1.02;letter-spacing:.01em}
+  .content .sub{font-family:var(--cn);font-size:15px;color:var(--cream-dim);margin-top:12px;letter-spacing:.04em;font-weight:500}
+  .content .tagline{font-family:var(--display);font-style:italic;font-size:20px;color:var(--cream);margin-top:24px;line-height:1.4;opacity:.9}
+  .content .rule{width:40px;height:1px;background:var(--gold);margin:26px 0;opacity:.8}
+  .content .body{font-family:var(--cn);font-weight:400;font-size:15.5px;line-height:1.95;color:var(--cream);letter-spacing:.01em}
+  .content .body p{margin-bottom:18px}
+  .content .body p:last-child{margin-bottom:0}
+
+  @media(max-width:900px){.content h1{font-size:clamp(30px,8vw,42px)}}
+</style>
+</head>
+<body>
+  <div class="topbar"><a class="back" id="back"><span class="ar"></span> 返回</a></div>
+  <main class="book">
+    <div class="gallery">
+      <div class="stage" id="stage"></div>
+      <div class="dots" id="dots"></div>
+    </div>
+    <div class="content">
+      <div class="crumb" id="crumb"></div>
+      <h1 id="title"></h1>
+      <div class="sub" id="sub"></div>
+      <div class="tagline" id="tagline"></div>
+      <div class="rule"></div>
+      <div class="body" id="body"></div>
+    </div>
+  </main>
+
+  <script src="../data/guide-data.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const sid = params.get('s') || 'fine-dining';
+    const iid = params.get('i');
+    const section = GUIDE.sections.find(s=>s.id===sid) || GUIDE.sections[0];
+    const item = (GUIDE.items[sid]||[]).find(x=>x.id===iid) || (GUIDE.items[sid]||[])[0];
+
+    document.getElementById('back').href = `../sections/section.html?s=${sid}`;
+    document.getElementById('crumb').textContent = `${GUIDE.city.nameEn} · ${section.name}`;
+    document.getElementById('title').textContent = item.title;
+    const subEl=document.getElementById('sub'); if(item.subtitle) subEl.textContent=item.subtitle; else subEl.remove();
+    const tagEl=document.getElementById('tagline'); if(item.tagline) tagEl.textContent=item.tagline; else tagEl.remove();
+    // body: split on \n\n into paragraphs (auto-wrap handled by browser)
+    const bodyEl=document.getElementById('body');
+    if(item.body){ item.body.split(/\n\n+/).forEach(p=>{const el=document.createElement('p');el.textContent=p.trim();bodyEl.appendChild(el);}); }
+
+    // ---- build carousel ----
+    const media = item.media || [];
+    const stage = document.getElementById('stage');
+    const dotsEl = document.getElementById('dots');
+    let cur = 0;
+
+    media.forEach((m, idx)=>{
+      const slide=document.createElement('div');
+      slide.className='slide'+(idx===0?' active':'');
+      const src=`../${item.folder}/${m.file}`;
+      if(m.type==='video'){
+        slide.innerHTML=`<video src="${src}" controls playsinline preload="metadata" style="object-position:${m.pos||'center'}"></video>`;
+      }else{
+        slide.innerHTML=`<img src="${src}" alt="${item.title} ${idx+1}" style="object-position:${m.pos||'center'}">`;
+      }
+      stage.appendChild(slide);
+    });
+
+    // counter
+    const counter=document.createElement('div');
+    counter.className='counter'; stage.appendChild(counter);
+
+    // nav arrows (only if >1)
+    if(media.length>1){
+      const prev=document.createElement('div');prev.className='nav prev';prev.innerHTML='<i></i>';
+      const next=document.createElement('div');next.className='nav next';next.innerHTML='<i></i>';
+      stage.appendChild(prev);stage.appendChild(next);
+      prev.onclick=()=>go(cur-1); next.onclick=()=>go(cur+1);
+      // dots
+      media.forEach((_,idx)=>{const d=document.createElement('div');d.className='dot'+(idx===0?' active':'');d.onclick=()=>go(idx);dotsEl.appendChild(d);});
+    }
+
+    function go(n){
+      const slides=stage.querySelectorAll('.slide');
+      const dots=dotsEl.querySelectorAll('.dot');
+      cur=(n+media.length)%media.length;
+      slides.forEach((s,i)=>s.classList.toggle('active',i===cur));
+      dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
+      counter.textContent=`${cur+1} / ${media.length}`;
+      // pause any video when leaving
+      slides.forEach((s,i)=>{const v=s.querySelector('video');if(v&&i!==cur)v.pause();});
+    }
+    counter.textContent=`1 / ${media.length}`;
+
+    // keyboard
+    document.addEventListener('keydown',e=>{
+      if(media.length<2)return;
+      if(e.key==='ArrowLeft')go(cur-1);
+      if(e.key==='ArrowRight')go(cur+1);
+    });
+  </script>
+</body>
+</html>
