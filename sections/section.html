@@ -28,7 +28,7 @@
   header.top h1{font-family:var(--display);font-weight:600;font-size:clamp(46px,8vw,86px);line-height:.94;letter-spacing:.04em}
   .divider{width:36px;height:1px;background:var(--gold);margin:24px auto 0;opacity:.7}
 
-  .boards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:42px 0 80px}
+  .boards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:42px 0 80px;max-width:760px;margin:0 auto}
   .card{position:relative;display:block;aspect-ratio:3/4;border-radius:4px;overflow:hidden;
     text-decoration:none;color:var(--cream);isolation:isolate;cursor:pointer}
   .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
@@ -60,6 +60,12 @@
   .card.s-cafe-club .name .amp{-webkit-text-stroke:1px #ff7a4d;text-shadow:0 0 8px rgba(255,122,77,.9),0 0 18px rgba(255,122,77,.6)}
   .card.s-cafe-club .botrule{color:rgba(232,122,214,.9)}
   .card.s-cafe-club .botrule::before,.card.s-cafe-club .botrule::after{background:linear-gradient(90deg,transparent,rgba(232,122,214,.7),transparent)}
+  /* local eats — warm gold serif with THE / flavors brackets */
+  .card.s-local-eats .name{font-family:"Marcellus",serif;font-weight:400;letter-spacing:.14em;text-indent:.14em;
+    color:#f0c873;text-shadow:0 0 18px rgba(240,200,115,.35),0 1px 14px rgba(0,0,0,.5)}
+  .card.s-local-eats .toprule,.card.s-local-eats .botrule{color:rgba(240,200,115,.85)}
+  .card.s-local-eats .toprule::before,.card.s-local-eats .toprule::after,
+  .card.s-local-eats .botrule::before,.card.s-local-eats .botrule::after{background:linear-gradient(90deg,transparent,rgba(240,200,115,.6),transparent)}
   .card .sub{font-family:var(--cn);font-size:12.5px;color:var(--cream-dim);letter-spacing:.05em;line-height:1.5;margin-top:6px}
   .card .go{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);opacity:0;transform:translateY(4px);transition:opacity .5s,transform .5s}
   .card .go .arrow{display:inline-block;width:22px;height:1px;background:var(--gold);position:relative}
@@ -90,8 +96,8 @@
     document.getElementById('kicker').textContent=`${city.nameEn} · CITY GUIDE`;
     document.getElementById('cityName').textContent=city.nameEn;
 
-    const idxLabel=['I','II','III'];
-    const brackets={'fine-dining':{top:'',bot:''},'experience':{top:'THE',bot:city.nameEn},'cafe-club':{top:'',bot:'DAY TO NIGHT'}};
+    const idxLabel=['I','II','III','IV'];
+    const brackets={'fine-dining':{top:'',bot:''},'experience':{top:'THE',bot:city.nameEn},'cafe-club':{top:'',bot:'DAY TO NIGHT'},'local-eats':{top:'THE',bot:city.nameEn+' FLAVORS'}};
     const host=document.getElementById('boards');
     GUIDE.sections.forEach((s,i)=>{
       const a=document.createElement('a');
