@@ -115,6 +115,36 @@ const ITEMS = {
         '适合安排：\n' +
         '适合午餐或晚餐，尤其适合住在 Mai Khao、Anantara、Avani、JW Marriott、Renaissance 附近的客人。从安纳塔拉酒店附近打车过去大约十分钟。餐厅建议提前预约，老宅内还有博物馆可参观，如果时间充裕，可以把这顿饭安排成一次“老普吉文化 + 米其林本地菜”的体验。',
     },
+
+{
+  id:'sizzlerooftop',
+  title:'Sizzle Rooftop',
+  subtitle:'山顶日落、牛排与安达曼海景',
+  folder:'images/phuket/fine-dining/sizzlerooftop',
+  cover:'1.jpg',
+  coverPos:'center',
+  media:[
+    {video:'video.mp4'},
+    '1.jpg','2.jpg','3.jpg','4.jpg',
+    '5.jpg','6.jpg','7.jpg'
+  ],
+  tagline:'Sunset · Steak · Seafood — 不只是吃饭，是把普吉的傍晚过完整',
+  lat:7.8802,
+  lng:98.2762,
+  body:
+    'Sizzle Rooftop 位于 Avista Hideaway Phuket Patong 酒店的山顶，' +
+    '离热闹的芭东不远，但视野和氛围完全是另一种感觉。这里看出去是山、海和安达曼海落日，' +
+    '天色从亮变暗后，现场的灯光、音乐和鸡尾酒会让整个晚餐更有度假感。\n\n' +
+    '推荐它，不是因为它有多复杂的料理概念，而是它把“看日落、喝一杯、吃一顿像样的牛排或海鲜”' +
+    '放在了同一个地方。菜单主打炭烤牛排、和牛、活海鲜、龙虾和各类鸡尾酒，' +
+    '比起只适合拍照的 Rooftop，这里至少正餐是可以认真吃的。\n\n' +
+    '适合情侣约会、庆祝生日纪念日，或者带第一次来普吉、想吃一顿有气氛晚餐的朋友。' +
+    '建议订接近日落的时间，先看海景和落日，再慢慢吃晚餐；如果只想喝一杯，也可以把它当成景观酒吧。' +
+    '不过这里属于酒店 Rooftop 的价格，不适合只想随便吃一顿或特别看重性价比的人。' +
+    '想要的是完整氛围、景色和一顿不容易出错的西式晚餐，选它会比较稳。',
+},
+
+
   ],
 
   /* ====== 普吉岛 · Experience / Cafe & Club 暂无内容（自动显示敬请期待）====== */
