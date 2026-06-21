@@ -306,6 +306,26 @@ body:
 
 
   ],
+'phuket-cafe-club': [
+    {
+      id:'yona',
+      title:'Yona Beach Club',
+      subtitle:'王嘉尔同款 · 海上漂浮的巨型俱乐部',
+      folder:'images/phuket/cafe-club/yona',
+      cover:'1.jpg', coverPos:'center',
+      media:[
+        '1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg',
+        '7.jpg','8.jpg','9.jpg','10.jpg','11.jpg'
+      ],
+      tagline:'World\'s Largest Floating Beach Club · Phuket',
+      lat:7.9519, lng:98.2861,
+      body:
+        'Yona Beach Club 号称是目前全球最大的海上漂浮俱乐部，也是王嘉尔打卡过的同款，值得专程来体验一次。它停泊在普吉外海，一共三层：白天上来看海景、晒太阳、泡水，到了晚上就变成氛围超好的海上蹦迪现场。\n\n' +
+        '这里分下午场和晚场。我们订的是下午场，会有专车到酒店接送到码头，再坐快艇上船。从甲板到泳池再到顶层，整片安达曼海就在脚下，日落时分尤其好看。\n\n' +
+        '几个一定要提前知道的点：必须提前预订位置；码头有安检；着装有要求（不能穿洞洞鞋之类的休闲鞋）；自带的食物和饮料不能带上船，船上另有餐饮。\n\n' +
+        '适合想在普吉体验海上派对、又愿意为氛围和场地买单的客人。建议根据想要的感觉选场次：想看风景、轻松一点选下午场；想要派对气氛就选晚场。'
+    },
+  ],
 
   /* ====== 普吉岛 · Experience / Cafe & Club 暂无内容（自动显示敬请期待）====== */
   /* 想加就照上面格式写：'phuket-experience': [ {...} ],  */
