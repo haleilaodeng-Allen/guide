@@ -665,7 +665,7 @@ body:
 id:'surinislands',
 title:'Surin Islands',
 subtitle:'苏林群岛｜把一天留给珊瑚、鱼群和海底世界',
-folder:'images/khaolak/experience/surin-islands',
+folder:'images/khaolak/experience/surinislands',
 cover:'1.jpg', coverPos:'center',
 media:[
 {video:'video.mp4'},
