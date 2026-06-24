@@ -662,7 +662,7 @@ body:
 '斯米兰不是一个适合赶路的地方。它值得你花一点时间、忍受一点舟车劳顿，然后在看见那片蓝色时，彻底忘记路上有多累。',
 },
 {
-id:'surin-islands',
+id:'surinislands',
 title:'Surin Islands',
 subtitle:'苏林群岛｜把一天留给珊瑚、鱼群和海底世界',
 folder:'images/khaolak/experience/surin-islands',
