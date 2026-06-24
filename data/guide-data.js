@@ -759,6 +759,46 @@ body:
 
 
 ],
+'chiangmai-fine-dining': [
+
+
+
+
+
+
+
+
+],
+
+'chiangmai-cafe-club': [
+
+
+
+
+
+
+],
+
+
+'chiangmai-local-eats': [
+
+
+
+
+
+
+
+
+],
+
+
+'chiangmai-experience': [
+
+
+
+
+],
+
 
 
 
