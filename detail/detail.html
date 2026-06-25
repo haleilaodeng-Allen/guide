@@ -100,7 +100,10 @@
     const stage=document.getElementById('stage');const dotsEl=document.getElementById('dots');let cur=0;
     media.forEach((m,idx)=>{
       const slide=document.createElement('div');slide.className='slide'+(idx===0?' active':'');
-      if(m.kind==='video'){slide.innerHTML=`<video src="${m.src}" controls playsinline preload="metadata"></video>`;}
+   if(m.kind==='video'){
+slide.innerHTML=`<video src="${m.src}" controls muted playsinline loop preload="metadata"></video>`;
+}
+
       else{slide.innerHTML=`<img src="${m.src}" alt="${item.title} ${idx+1}">`;}
       stage.appendChild(slide);
     });
@@ -112,11 +115,34 @@
       prev.onclick=()=>go(cur-1);next.onclick=()=>go(cur+1);
       media.forEach((_,idx)=>{const d=document.createElement('div');d.className='dot'+(idx===0?' active':'');d.onclick=()=>go(idx);dotsEl.appendChild(d);});
     }
-    function go(n){const slides=stage.querySelectorAll('.slide');const dots=dotsEl.querySelectorAll('.dot');
-      cur=(n+media.length)%media.length;slides.forEach((s,i)=>s.classList.toggle('active',i===cur));
-      dots.forEach((d,i)=>d.classList.toggle('active',i===cur));counter.textContent=`${cur+1} / ${media.length}`;
-      slides.forEach((s,i)=>{const v=s.querySelector('video');if(v&&i!==cur)v.pause();});}
+    function go(n){
+const slides=stage.querySelectorAll('.slide');
+const dots=dotsEl.querySelectorAll('.dot');
+
+cur=(n+media.length)%media.length;
+slides.forEach((s,i)=>s.classList.toggle('active',i===cur));
+dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
+counter.textContent=`${cur+1} / ${media.length}`;
+
+slides.forEach((s,i)=>{
+const v=s.querySelector('video');
+if(!v) return;
+
+
+if(i===cur){
+  v.play().catch(()=>{});
+}else{
+  v.pause();
+  v.currentTime=0;
+}
+
+
+});
+}
+
     counter.textContent=`1 / ${media.length}`;
+const firstVideo=stage.querySelector('.slide.active video');
+if(firstVideo) firstVideo.play().catch(()=>{});
     document.addEventListener('keydown',e=>{if(media.length<2)return;if(e.key==='ArrowLeft')go(cur-1);if(e.key==='ArrowRight')go(cur+1);});
   </script>
 </body>
