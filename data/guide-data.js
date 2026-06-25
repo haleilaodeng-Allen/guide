@@ -844,6 +844,8 @@ media:[
 {video:'video6.mp4'},
 {video:'video7.mp4'},
 {video:'video8.mp4'}
+'1.jpg'
+
 ],
 tagline:'在清迈的夜晚，围着一条炭烤鱼，吃到一点来自泰国南部海岸的味道。',
 body:
