@@ -756,7 +756,7 @@ id:'thi-lo-su-waterfall',
 title:'Thi Lo Su Waterfall',
 subtitle:'提洛苏瀑布｜藏在雨林深处的巨型瀑布',
 folder:'images/chiangmai/experience/thi-lo-su-waterfall',
-cover:'cover.jpg', coverPos:'center',
+cover:'video1.mp4', coverPos:'center',
 media:[
 {video:'video1.mp4'}
 ],
