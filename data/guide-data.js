@@ -833,7 +833,7 @@ id:'maadae-slowfishkitchen',
 title:'Maadae Slow Fish Kitchen',
 subtitle:'把南泰的海，带进清迈古城',
 folder:'images/chiangmai/local-eats/maadae-slowfishkitchen',
-cover:'video1.mp4',
+cover:'1.jpg'
 coverPos:'center',
 media:[
 {video:'video1.mp4'},
@@ -843,7 +843,7 @@ media:[
 {video:'video5.mp4'},
 {video:'video6.mp4'},
 {video:'video7.mp4'},
-{video:'video8.mp4'}
+{video:'video8.mp4'},
 '1.jpg'
 
 ],
