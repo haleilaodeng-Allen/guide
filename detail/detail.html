@@ -130,7 +130,20 @@ if(!v) return;
 
 
 if(i===cur){
-  v.play().catch(()=>{});
+  v.muted=true;
+  v.defaultMuted=true;
+  v.playsInline=true;
+
+  const startVideo=()=>{
+    if(i===cur) v.play().catch(()=>{});
+  };
+
+  if(v.readyState>=3){
+    startVideo();
+  }else{
+    v.addEventListener('canplay',startVideo,{once:true});
+    v.load();
+  }
 }else{
   v.pause();
   v.currentTime=0;
@@ -140,9 +153,28 @@ if(i===cur){
 });
 }
 
-    counter.textContent=`1 / ${media.length}`;
+counter.textContent=`1 / ${media.length}`;
+
 const firstVideo=stage.querySelector('.slide.active video');
-if(firstVideo) firstVideo.play().catch(()=>{});
+if(firstVideo){
+firstVideo.muted=true;
+firstVideo.defaultMuted=true;
+firstVideo.playsInline=true;
+
+const startFirstVideo=()=>{
+if(stage.querySelector('.slide.active video')===firstVideo){
+firstVideo.play().catch(()=>{});
+}
+};
+
+if(firstVideo.readyState>=3){
+startFirstVideo();
+}else{
+firstVideo.addEventListener('canplay',startFirstVideo,{once:true});
+firstVideo.load();
+}
+}
+
     document.addEventListener('keydown',e=>{if(media.length<2)return;if(e.key==='ArrowLeft')go(cur-1);if(e.key==='ArrowRight')go(cur+1);});
   </script>
 </body>
