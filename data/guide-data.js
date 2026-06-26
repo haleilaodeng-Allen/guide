@@ -997,7 +997,7 @@ body:
   cover:'1.jpg', coverPos:'center',
   media:[
     '1.jpg','2.jpg','3.jpg','4.jpg',
-    '5.jpg','6.jpg','7.jpg'
+    '5.jpg','6.jpg','7.jpg','8.jpg'
   ],
   tagline:'拉花不是噱头，而是一杯被认真做到近乎艺术品的咖啡。',
   body:
