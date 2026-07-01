@@ -1513,6 +1513,34 @@ body:
 ],
 
 'bali-local-eats': [
+  {
+      id:'basabasi',
+      title:'Basabasi',
+      subtitle:'水明漾一顿有炭火烟气的印尼沙嗲晚餐',
+      folder:'images/bali/local-eats/basabasi',
+      cover:'1.jpg', coverPos:'center',
+      media:['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg'],
+      tagline:'炭火现烤的印尼沙嗲、巴厘竹筒香料鸡和不同地区的 sambal 辣椒酱',
+      lat:-8.6899, lng:115.1606,           /* Basabasi / Seminyak 大致坐标，示范用 */
+      body:
+        '如果你在水明漾，不想每晚都吃西餐，也不想随便找一家 warung 点炒饭，Basabasi 很值得留一顿。\n\n' +
+        '它主打的是印尼沙嗲，但不是那种路边随手买几串、蘸一大坨花生酱的吃法。店里用炭火慢慢烤，肉香和烟熏味很足，再配不同地区的 sambal 辣椒酱、甜酱油和香料，吃下来会觉得这顿饭比普通印尼菜更有记忆点。\n\n' +
+        '这里最适合晚上来。点几种烤串、一份主食、再加一道巴厘传统做法的热菜，两个人慢慢吃，既能吃到当地味道，环境也不会太随意。\n\n' +
+        '【第一次来，建议先点】\n\n' +
+        'Sate Sambal Cobek：炭火烤串配烟熏辣椒香料酱，味道最有层次，适合当主角。\n\n' +
+        'Sate Lilit Babi：巴厘风味猪肉串，香料感更明显，配 Sambal Matah 很香；不吃猪肉可以换别的沙嗲。\n\n' +
+        'Ayam Timbungan：很推荐的一道。鸡肉和当地香料放进竹筒里慢火烹制，不是普通烤鸡，比较有巴厘特色。\n\n' +
+        'Nasi Bakar 或 Nasi Goreng：点一份饭搭配烤串会更完整，不然整桌炭火和酱料吃到后面容易有点腻。\n\n' +
+        'Kangkung Belacan：炒空心菜配虾酱风味，适合平衡肉类和辣味。\n\n' +
+        '【值不值得去？】\n\n' +
+        'Basabasi 不是那种“巴厘岛第一名、一定惊艳”的餐厅，但它胜在很稳：炭火够香、香料不敷衍、环境舒服，也不会把印尼菜做得太游客化。\n\n' +
+        '如果住在水明漾、Petitenget，或者傍晚逛完附近准备找地方吃饭，这家比打卡型餐厅更值得。\n\n' +
+        '【实用信息】\n\n' +
+        '位置：Jl. Kayu Aya No. 6, Seminyak。\n\n' +
+        '营业时间：每天 16:00–23:00。\n\n' +
+        '类型：印尼菜 / 炭火沙嗲 / 晚餐。\n\n' +
+        '建议：两个人点 2 种沙嗲＋1 道 Timbungan＋1 份主食或蔬菜，份量会比较刚好。\n\n'
+},
 
 
   ],
